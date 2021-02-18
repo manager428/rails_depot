@@ -14,9 +14,10 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <header class="bg-green-700">
+    <header class="bg-green-700 flex">
       <%= image_tag 'logo.svg', alt: 'The Pragmatic bookshelf' %>
       <h1><%= @page_title%> </h1>
+      <h1><%= Time.now() %></h1>
     </header>
     <section class='flex'>
       <nav class='bg-green-900 p-6' >

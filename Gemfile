@@ -47,7 +47,7 @@ gem 'bootsnap', require: false
 
 gem 'htmlbeautifier'
 
-gem 'rubocop'
+gem 'rufo'
 # Use Sass to process CSS
 # gem "sassc-rails"
 

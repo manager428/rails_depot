@@ -8,4 +8,7 @@
     "*.html.erb": "erb",
     "*.css": "tailwindcss"
   },
+  "[ruby]": { // or [erb] / [gemfile]
+    "editor.formatOnSave": true
+  }
 }
