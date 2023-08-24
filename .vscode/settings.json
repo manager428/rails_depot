@@ -1,3 +1,11 @@
 {
-  "editor.guides.bracketPairs": "active"
+  "editor.guides.bracketPairs": "active",
+  "[erb]": {
+    "editor.defaultFormatter": "aliariff.vscode-erb-beautify",
+    "editor.formatOnSave": true
+  },
+  "files.associations": {
+    "*.html.erb": "erb",
+    "*.css": "tailwindcss"
+  },
 }
