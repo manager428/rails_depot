@@ -1,11 +1,7 @@
 <div class = "w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice">
-      <%= notice %>
-    </div>
-  <% end %>
+  <%= render 'notice' %>
   <h1 class='font-bold text-xl mb-6 pb-2 border-b-2'>
-    your Pragmatic catalog
+    Your Pragmatic Catalog
   </h1>
   <ul>
     <% cache @products do %>
