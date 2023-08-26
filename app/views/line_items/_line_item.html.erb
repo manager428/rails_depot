@@ -1,10 +1,14 @@
-<tr>
-  <td class="text-right"><%= line_item.quantity %></td>
-  <td>&times;</td>
-  <td class="pr-2">
-    <%= line_item.product.title %>
-  </td>
-  <td class="text-right font-bold">
-    <%= number_to_currency(line_item.total_price) %>
-  </td>
-</tr>
+	<% if line_item == @current_item %>
+  <tr class="line-item-highlight">
+  <% else %>
+    <tr>
+    <% end %>
+    <td class="text-right"><%= line_item.quantity %></td>
+    <td>&times;</td>
+    <td class="pr-2">
+      <%= line_item.product.title %>
+    </td>
+    <td class="text-right font-bold">
+      <%= number_to_currency(line_item.total_price) %>
+    </td>
+  </tr>

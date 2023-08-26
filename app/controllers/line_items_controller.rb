@@ -26,6 +26,7 @@ class LineItemsController < ApplicationController
     @line_item = @cart.add_product(product)
     respond_to do |format|
       if @line_item.save
+        @current_item = @line_item
         format.turbo_stream
         format.html { redirect_to store_index_url }
         format.json { render :show, status: :created, location: @line_item }
