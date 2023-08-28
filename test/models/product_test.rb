@@ -1,50 +1,82 @@
-require 'test_helper'
+#---
+# Excerpted from "Agile Web Development with Rails 7",
+# published by The Pragmatic Bookshelf.
+# Copyrights apply to this code. It may not be used to create training material,
+# courses, books, articles, and the like. Contact us if you are in doubt.
+# We make no guarantees that this code is fit for any purpose.
+# Visit https://pragprog.com/titles/rails7 for more book information.
+#---
+require "test_helper"
 
 class ProductTest < ActiveSupport::TestCase
-  fixtures :products # load the fixtures from test/fixtures/products.yml
-  test 'product attributes must not be empty' do
+  test "product attributes must not be empty" do
     product = Product.new
     assert product.invalid?
-    assert product.errors[:title].any? # check if the product object has any errors on the title field
-    assert product.errors[:description].any? # check if the product object has any errors on the description field
-    assert product.errors[:price].any? # check if the product object has any errors on the price field
-    assert product.errors[:image_url].any? # check if the product object has any errors on the image_url field
+    assert product.errors[:title].any?
+    assert product.errors[:description].any?
+    assert product.errors[:price].any?
+    assert product.errors[:image_url].any?
   end
 
-  test 'product price must be positive' do
-    product = Product.new(
-      title: 'My Book Title',
-      description: 'yyy',
-      image_url: 'zzz.jpg'
-    )
+  test "product price must be positive" do
+    product = Product.new(title: "My Book Title",
+                          description: "yyy",
+                          image_url: "zzz.jpg")
     product.price = -1
     assert product.invalid?
-    assert_equal ['must be greater than or equal to 0.01'], product.errors[:price]
+    assert_equal ["must be greater than or equal to 0.01"],
+      product.errors[:price]
 
-    product.price = 0 # set the price to 0
+    product.price = 0
     assert product.invalid?
-    assert_equal ['must be greater than or equal to 0.01'], product.errors[:price]
+    assert_equal ["must be greater than or equal to 0.01"],
+      product.errors[:price]
 
     product.price = 1
     assert product.valid?
   end
 
   def new_product(image_url)
-    Product.new(
-      title: 'My Book Title',
-      description: 'yyy',
-      price: 1,
-      image_url:
-    )
+    Product.new(title: "My Book Title",
+                description: "yyy",
+                price: 1,
+                image_url: image_url)
   end
-  test 'image url' do
-    ok = %w[fred.gif fred.jpg fred.png FRED.JPG FRED.Jpg http://a.b.c/x/y/z/fred.gif] # %w{...} is a shortcut for an array of strings
-    bad = %w[fred.doc fred.gif/more fred.gif.more] # %w{...} is a shortcut for an array of strings
+
+  test "image url" do
+    ok = %w{ fred.gif fred.jpg fred.png FRED.JPG FRED.Jpg
+             http://a.b.c/x/y/z/fred.gif }
+    bad = %w{ fred.doc fred.gif/more fred.gif.more }
+
     ok.each do |image_url|
-      assert new_product(image_url).valid?, "#{image_url} should be valid"
+      assert new_product(image_url).valid?,
+             "#{image_url} must be valid"
     end
+
     bad.each do |image_url|
-      assert new_product(image_url).invalid?, "#{image_url} should be invalid"
+      assert new_product(image_url).invalid?,
+             "#{image_url} must be invalid"
     end
+  end
+
+  test "product is not valid without a unique title" do
+    product = Product.new(title: products(:ruby).title,
+                          description: "yyy",
+                          price: 1,
+                          image_url: "fred.gif")
+
+    assert product.invalid?
+    assert_equal ["has already been taken"], product.errors[:title]
+  end
+
+  test "product is not valid without a unique title - i18n" do
+    product = Product.new(title: products(:ruby).title,
+                          description: "yyy",
+                          price: 1,
+                          image_url: "fred.gif")
+
+    assert product.invalid?
+    assert_equal [I18n.translate("errors.messages.taken")],
+                 product.errors[:title]
   end
 end

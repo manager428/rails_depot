@@ -1,5 +1,13 @@
+#---
+# Excerpted from "Agile Web Development with Rails 7",
+# published by The Pragmatic Bookshelf.
+# Copyrights apply to this code. It may not be used to create training material,
+# courses, books, articles, and the like. Contact us if you are in doubt.
+# We make no guarantees that this code is fit for any purpose.
+# Visit https://pragprog.com/titles/rails7 for more book information.
+#---
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[show edit update destroy]
+  before_action :set_product, only: %i[ show edit update destroy ]
 
   # GET /products or /products.json
   def index
@@ -7,7 +15,8 @@ class ProductsController < ApplicationController
   end
 
   # GET /products/1 or /products/1.json
-  def show; end
+  def show
+  end
 
   # GET /products/new
   def new
@@ -15,7 +24,8 @@ class ProductsController < ApplicationController
   end
 
   # GET /products/1/edit
-  def edit; end
+  def edit
+  end
 
   # POST /products or /products.json
   def create
@@ -23,11 +33,19 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to product_url(@product), notice: "Product was successfully created." }
-        format.json { render :show, status: :created, location: @product }
+        format.html {
+          redirect_to product_url(@product),
+                      notice: "Product was successfully created."
+        }
+        format.json {
+          render :show, status: :created,
+                        location: @product
+        }
       else
-        puts @product.errors.full_messages
-        format.html { render :new, status: :unprocessable_entity }
+        format.html {
+          render :new,
+                 status: :unprocessable_entity
+        }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
@@ -37,12 +55,23 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to product_url(@product), notice: "Product was successfully updated." }
+        format.html {
+          redirect_to product_url(@product),
+                      notice: "Product was successfully updated."
+        }
         format.json { render :show, status: :ok, location: @product }
-        @product.broadcast_replace_later_to "products", partial: "store/product"
+
+        @product.broadcast_replace_later_to "products",
+          partial: "store/product"
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        format.html {
+          render :edit,
+                 status: :unprocessable_entity
+        }
+        format.json {
+          render json: @product.errors,
+                 status: :unprocessable_entity
+        }
       end
     end
   end
@@ -52,8 +81,24 @@ class ProductsController < ApplicationController
     @product.destroy
 
     respond_to do |format|
-      format.html { redirect_to products_url, notice: "Product was successfully destroyed." }
+      format.html {
+        redirect_to products_url,
+                    notice: "Product was successfully destroyed."
+      }
       format.json { head :no_content }
+    end
+  end
+
+  def who_bought
+    @product = Product.find(params[:id])
+    @latest_order = @product.orders.order(:updated_at).last
+    if stale?(@latest_order)
+      respond_to do |format|
+        format.html
+        format.xml
+        format.atom
+        format.json { render json: @product.to_json(include: :orders) }
+      end
     end
   end
 

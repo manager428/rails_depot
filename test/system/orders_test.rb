@@ -1,47 +1,49 @@
+#---
+# Excerpted from "Agile Web Development with Rails 7",
+# published by The Pragmatic Bookshelf.
+# Copyrights apply to this code. It may not be used to create training material,
+# courses, books, articles, and the like. Contact us if you are in doubt.
+# We make no guarantees that this code is fit for any purpose.
+# Visit https://pragprog.com/titles/rails7 for more book information.
+#---
 require "application_system_test_case"
 
 class OrdersTest < ApplicationSystemTestCase
-  setup do
-    @order = orders(:one)
-  end
+  test "check dynamic fields" do
+    visit store_index_url
 
-  test "visiting the index" do
-    visit orders_url
-    assert_selector "h1", text: "Orders"
-  end
+    click_on 'Add to Cart', match: :first
 
-  test "should create order" do
-    visit orders_url
-    click_on "New order"
+    click_on 'Checkout'
 
-    fill_in "Address", with: @order.address
-    fill_in "Email", with: @order.email
-    fill_in "Name", with: @order.name
-    fill_in "Pay type", with: @order.pay_type
-    click_on "Create Order"
+    assert has_no_field? 'Routing number'
+    assert has_no_field? 'Account number'
+    assert has_no_field? 'Credit card number'
+    assert has_no_field? 'Expiration date'
+    assert has_no_field? 'Po number'
 
-    assert_text "Order was successfully created"
-    click_on "Back"
-  end
+    select 'Check', from: 'Pay type'
 
-  test "should update Order" do
-    visit order_url(@order)
-    click_on "Edit this order", match: :first
+    assert has_field? 'Routing number'
+    assert has_field? 'Account number'
+    assert has_no_field? 'Credit card number'
+    assert has_no_field? 'Expiration date'
+    assert has_no_field? 'Po number'
 
-    fill_in "Address", with: @order.address
-    fill_in "Email", with: @order.email
-    fill_in "Name", with: @order.name
-    fill_in "Pay type", with: @order.pay_type
-    click_on "Update Order"
+    select 'Credit card', from: 'Pay type'
 
-    assert_text "Order was successfully updated"
-    click_on "Back"
-  end
+    assert has_no_field? 'Routing number'
+    assert has_no_field? 'Account number'
+    assert has_field? 'Credit card number'
+    assert has_field? 'Expiration date'
+    assert has_no_field? 'Po number'
 
-  test "should destroy Order" do
-    visit order_url(@order)
-    click_on "Destroy this order", match: :first
+    select 'Purchase order', from: 'Pay type'
 
-    assert_text "Order was successfully destroyed"
+    assert has_no_field? 'Routing number'
+    assert has_no_field? 'Account number'
+    assert has_no_field? 'Credit card number'
+    assert has_no_field? 'Expiration date'
+    assert has_field? 'Po number'
   end
 end

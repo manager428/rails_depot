@@ -1,4 +1,5 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# Read about fixtures at
+# https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
   title: MyString
@@ -12,10 +13,8 @@ two:
   image_url: lorem.jpg
   price: 9.99
 
-ruby:
+ruby: 
   title: Programming Ruby 1.9
-  description: Ruby is the fastest growing and most exciting dynamic language
-    out there. If you need to get working programs delivered fast,
-    you should add Ruby to your toolbox.
-  image_url: ruby.jpg
+  description: Ruby is the fastest growing and most exciting dynamic language out there.  If you need to get working programs delivered fast, you should add Ruby to your toolbox.
   price: 49.50
+  image_url: ruby.jpg 
