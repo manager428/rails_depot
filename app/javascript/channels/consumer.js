@@ -6,8 +6,9 @@
  * We make no guarantees that this code is fit for any purpose.
  * Visit https://pragprog.com/titles/rails7 for more book information.
 ***/
-//= link_tree ../images
-//= link_directory ../stylesheets .css
-//= link_tree ../../javascript .js
-//= link_tree ../../../vendor/javascript .js
-//= link_tree ../builds
+// Action Cable provides the framework to deal with WebSockets in Rails.
+// You can generate new channels where WebSocket features live using the `bin/rails generate channel` command.
+
+import { createConsumer } from "@rails/actioncable"
+
+export default createConsumer()

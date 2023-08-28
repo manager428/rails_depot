@@ -31,7 +31,7 @@ gem 'tailwindcss-rails'
 gem 'jbuilder'
 
 # Use Redis adapter to run Action Cable in production
-# gem "redis", "~> 4.0"
+gem "redis", "~> 4.0"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -48,6 +48,7 @@ gem 'bootsnap', require: false
 gem 'htmlbeautifier'
 
 gem 'rufo'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

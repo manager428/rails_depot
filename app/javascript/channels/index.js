@@ -6,8 +6,5 @@
  * We make no guarantees that this code is fit for any purpose.
  * Visit https://pragprog.com/titles/rails7 for more book information.
 ***/
-//= link_tree ../images
-//= link_directory ../stylesheets .css
-//= link_tree ../../javascript .js
-//= link_tree ../../../vendor/javascript .js
-//= link_tree ../builds
+// Import all the channels to be used by Action Cable
+import "channels/products_channel"

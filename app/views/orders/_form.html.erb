@@ -1,7 +1,7 @@
 <%= form_with(model: order, class: "contents") do |form| %>
   <% if order.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2
- 	      font-medium rounded-lg mt-3">
+      font-medium rounded-lg mt-3">
       <h2><%= pluralize(order.errors.count, "error") %>
         prohibited this order from being saved:</h2>
       <ul>
@@ -23,14 +23,21 @@
     <%= form.label :email %>
     <%= form.email_field :email, class: "input-field" %>
   </div>
-  <div class="my-5">
-    <%= form.label :pay_type %>
-    <%= form.select :pay_type, Order.pay_types.keys,
-	                    { prompt: 'Select a payment method' },
-	                    class: "input-field" %>
+  <div data-controller="payment">
+    <div class="my-5">
+      <%= form.label :pay_type %>
+      <%= form.select :pay_type, Order.pay_types.keys,
+                      { prompt: 'Select a payment method' },
+                      'data-payment-target' => 'selection',
+                      'data-action' => 'payment#showAdditionalFields',
+                      class: "input-field" %>
+    </div>
+    <%= render partial: 'check', locals: {form: form} %>
+    <%= render partial: 'cc', locals: {form: form} %>
+    <%= render partial: 'po', locals: {form: form} %>
   </div>
   <div class="inline">
     <%= form.submit 'Place Order',  class: "rounded-lg py-3 px-5
-	      bg-green-200 text-black inline-block font-medium cursor-pointer" %>
+      bg-green-200 text-black inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>

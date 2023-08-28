@@ -6,8 +6,7 @@
  * We make no guarantees that this code is fit for any purpose.
  * Visit https://pragprog.com/titles/rails7 for more book information.
 ***/
-//= link_tree ../images
-//= link_directory ../stylesheets .css
-//= link_tree ../../javascript .js
-//= link_tree ../../../vendor/javascript .js
-//= link_tree ../builds
+// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
+import "@hotwired/turbo-rails"
+import "controllers"
+import "channels"

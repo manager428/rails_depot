@@ -6,8 +6,18 @@
  * We make no guarantees that this code is fit for any purpose.
  * Visit https://pragprog.com/titles/rails7 for more book information.
 ***/
-//= link_tree ../images
-//= link_directory ../stylesheets .css
-//= link_tree ../../javascript .js
-//= link_tree ../../../vendor/javascript .js
-//= link_tree ../builds
+import consumer from "channels/consumer"
+
+consumer.subscriptions.create("ProductsChannel", {
+  connected() {
+    // Called when the subscription is ready for use on the server
+  },
+
+  disconnected() {
+    // Called when the subscription has been terminated by the server
+  },
+
+  received(data) {
+    // Called when there's incoming data on the websocket for this channel
+  }
+});

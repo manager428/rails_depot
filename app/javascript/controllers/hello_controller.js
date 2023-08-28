@@ -6,8 +6,10 @@
  * We make no guarantees that this code is fit for any purpose.
  * Visit https://pragprog.com/titles/rails7 for more book information.
 ***/
-//= link_tree ../images
-//= link_directory ../stylesheets .css
-//= link_tree ../../javascript .js
-//= link_tree ../../../vendor/javascript .js
-//= link_tree ../builds
+import { Controller } from "@hotwired/stimulus"
+
+export default class extends Controller {
+  connect() {
+    this.element.textContent = "Hello World!"
+  }
+}
