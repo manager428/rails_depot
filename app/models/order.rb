@@ -1,4 +1,3 @@
-require "active_model/serializers/xml"
 require "pago"
 
 class Order < ApplicationRecord
