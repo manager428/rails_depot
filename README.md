@@ -59,3 +59,16 @@ Finally, to load it, we need to add in app/javascript/controllers/index.js
 import HomeController from './controllers/home_controller.js'
 application.register('home', HomeController)
 ```
+
+#### sending Confirmation Emails
+ - configuring how email is to be sent
+ - determining when to send the email
+ - specifying what you want to say
+
+#### receiving Email with Action Mailbox
+ - initially setting up Action Mailbox
+    `bin/rails​​ ​​action_mailbox:install`
+    The way Action Mailbox works is that all incoming emails get stored in a cloud storage system like Amazon’s S3.
+ - setting up Active Storage to hold the new emails we receive
+    we can use Active Storage locally, which means Action Mailbox can work locally.
+ - implementing a mailbox
