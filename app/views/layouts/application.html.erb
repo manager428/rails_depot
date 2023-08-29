@@ -11,9 +11,19 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <header class="bg-green-700">
+    <header class="bg-green-700 flex">
       <%= image_tag 'logo.svg', alt: 'The Pragmatic Bookshelf' %>
       <h1><%= @page_title %></h1>
+      <div class="ml-auto">
+        <aside data-controller="locale">
+          <%= form_tag store_index_path, class: 'locale' do %>
+            <%= select_tag 'set_locale', 
+          options_for_select(LANGUAGES, I18n.locale.to_s),
+          onchange: 'this.form.submit()' %>
+            <%= submit_tag 'submit', data: {'locale-target' => 'submit'} %>
+          <% end %>
+        </aside>
+      </div>
     </header>
     <section class="flex">
       <nav class="bg-green-900 p-6">
