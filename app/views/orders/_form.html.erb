@@ -2,31 +2,31 @@
   <% if order.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2
       font-medium rounded-lg mt-3">
-      <h2><%= pluralize(order.errors.count, "error") %>
-        prohibited this order from being saved:</h2>
+      <h2><%= raw t('errors.template.header', count: @order.errors.count, model: t('activerecord.models.order')) %></h2>
+      <p><%= t('errors.template.body') %></p>
       <ul>
         <% order.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <li><%=raw error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
   <div class="my-5">
-    <%= form.label :name %>
+    <%= form.label :name, t('.name') %>
     <%= form.text_field :name, class: "input-field" %>
   </div>
   <div class="my-5">
-    <%= form.label :address %>
+    <%= form.label :address, t('.address_html') %>
     <%= form.text_area :address, rows: 4, class: "input-field" %>
   </div>
   <div class="my-5">
-    <%= form.label :email %>
+    <%= form.label :email, t('.email') %>
     <%= form.email_field :email, class: "input-field" %>
   </div>
   <div data-controller="payment">
     <div class="my-5">
       <%= form.label :pay_type %>
-      <%= form.select :pay_type, Order.pay_types.keys,
+      <%= form.select :pay_type, Order.pay_types.keys.map{|key| [t('.pay_types.#{key}'), key]},
                       { prompt: 'Select a payment method' },
                       'data-payment-target' => 'selection',
                       'data-action' => 'payment#showAdditionalFields',
@@ -37,7 +37,7 @@
     <%= render partial: 'po', locals: {form: form} %>
   </div>
   <div class="inline">
-    <%= form.submit 'Place Order',  class: "rounded-lg py-3 px-5
+    <%= form.submit t('.submit'),  class: "rounded-lg py-3 px-5
       bg-green-200 text-black inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>
