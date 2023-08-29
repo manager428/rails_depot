@@ -9,7 +9,7 @@
       </p>
       <div class="mt-3">
         <%= number_to_currency(product.price) %>
-        <%= button_to 'Add to Cart',
+        <%= button_to t('.add_html'),
  	            line_items_path(product_id: product),
  	            form_class: 'inline',
  	            class: 'ml-4 rounded-lg py-1 px-2 text-white bg-green-600' %>
