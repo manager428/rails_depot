@@ -26,8 +26,8 @@
   <div data-controller="payment">
     <div class="my-5">
       <%= form.label :pay_type %>
-      <%= form.select :pay_type, Order.pay_types.keys.map{|key| [t('.pay_types.#{key}'), key]},
-                      { prompt: 'Select a payment method' },
+      <%= form.select :pay_type, Order.pay_types.keys.map{ |key| [t(".pay_types.#{key}"), key] },
+                      { prompt: t('.pay_prompt_html') },
                       'data-payment-target' => 'selection',
                       'data-action' => 'payment#showAdditionalFields',
                       class: "input-field" %>
