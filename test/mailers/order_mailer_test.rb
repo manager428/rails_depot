@@ -12,8 +12,8 @@ class OrderMailerTest < ActionMailer::TestCase
   test "shipped" do
     mail = OrderMailer.shipped(orders(:one))
     assert_equal "Pragmatic Store Order Shipped", mail.subject
-    assert_equal ["dave@example.org"], mail.to
-    assert_equal ["depot@example.com"], mail.from
+    assert_equal ["sweetbigdream428@gmail.com"], mail.to
+    assert_equal ["sweetbigdream428@gmail.com"], mail.from
     assert_match %r(
       <td[^>]*>1<\/td>\s*
       <td>&times;<\/td>\s*
