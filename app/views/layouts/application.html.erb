@@ -24,6 +24,15 @@
           <li><a href="/news">News</a></li>
           <li><a href="/contact">Contact</a></li>
         </ul>
+        <% if session[:user_id] %>
+          <hr class="my-2">
+          <ul class="text-gray-300 leading-8">
+            <li><%= link_to 'Orders',   orders_path   %></li>
+            <li><%= link_to 'Products', products_path %></li>
+            <li><%= link_to 'Users',    users_path    %></li>
+            <li><%= button_to 'Logout', logout_path, method: :delete %></li>
+          </ul>
+        <% end %>
       </nav>
       <main class="container mx-auto mt-4 px-5 flex">
         <%= yield %>
