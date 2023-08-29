@@ -1,0 +1,33 @@
+<%= form_with(model: user, class: "contents") do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation"
+      class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(user.errors.count, "error") %>
+        prohibited this user from being saved:</h2>
+      <ul>
+        <% user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <h2>Enter User Details</h2>
+  <div class="my-5">
+    <%= form.label :name, 'Name:' %>
+    <%= form.text_field :name, class: "input-field" %>
+  </div>
+  <div class="my-5">
+    <%= form.label :password, 'Password:' %>
+    <%= form.password_field :password, class: "input-field" %>
+  </div>
+  <div class="my-5">
+    <%= form.label :password_confirmation, 'Confirm:' %>
+    <%= form.password_field :password_confirmation,
+                            id: :user_password_confirmation,
+                            class: "input-field" %>
+  </div>
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white
+       inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>
