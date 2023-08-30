@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
-    "@hotwired/stimulus-webpack-helpers": "^1.0.1"
+    "@hotwired/stimulus-webpack-helpers": "^1.0.1",
+    "@rails/actiontext": "^7.0.7-2",
+    "trix": "^2.0.5"
   }
 }

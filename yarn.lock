@@ -11,3 +11,27 @@
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/@hotwired/stimulus/-/stimulus-3.2.2.tgz#071aab59c600fed95b97939e605ff261a4251608"
   integrity sha512-eGeIqNOQpXoPAIP7tC1+1Yc1yl1xnwYqg+3mzqxyrbE5pg5YFBZcA6YoTiByJB6DKAEsiWtl6tjTJS4IYtbB7A==
+
+"@rails/actiontext@^7.0.7-2":
+  version "7.0.7-2"
+  resolved "https://registry.yarnpkg.com/@rails/actiontext/-/actiontext-7.0.7-2.tgz#32a78cd9cbc1a00b0d240a8299e2d3fb4a1eabdd"
+  integrity sha512-m/wTMqhJfKMx7EW+EVVQvrv91Nzw5e+rDQ10ow8wFBKAf4Q9izjg9/TXqLA7OVV9CfM4yOr1yMM4wM544kyOYw==
+  dependencies:
+    "@rails/activestorage" ">= 7.0.0-alpha1"
+
+"@rails/activestorage@>= 7.0.0-alpha1":
+  version "7.0.7"
+  resolved "https://registry.yarnpkg.com/@rails/activestorage/-/activestorage-7.0.7.tgz#a23e22bccd61756ba52aff3b8cb43b050ae1ecca"
+  integrity sha512-EoiGMWUmRzYQhOQ1ifTFHuYNdOHP3f0YOhrKsFlshrV8vzkRkip1Ks3BMzW98cYOw7v6PUPmEeBxgb4jY2U2+g==
+  dependencies:
+    spark-md5 "^3.0.1"
+
+spark-md5@^3.0.1:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/spark-md5/-/spark-md5-3.0.2.tgz#7952c4a30784347abcee73268e473b9c0167e3fc"
+  integrity sha512-wcFzz9cDfbuqe0FZzfi2or1sgyIrsDwmPwfZC4hiNidPdPINjeUwNfv5kldczoEAcjl9Y1L3SM7Uz2PUEQzxQw==
+
+trix@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/trix/-/trix-2.0.5.tgz#f54880ab38e24d47829a04e04afaf03a8607f772"
+  integrity sha512-OiCbDf17F7JahEwhyL1MvK9DxAAT1vkaW5sn+zpwfemZAcc4RfQB4ku18/1mKP58LRwBhjcy+6TBho7ciXz52Q==

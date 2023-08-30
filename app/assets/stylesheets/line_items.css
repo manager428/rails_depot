@@ -1,6 +1,6 @@
 @keyframes line-item-highlight {
   0% {
-    background: rgb(70, 182, 10);
+    background: #8f8;
   }
   100% {
     background: none;

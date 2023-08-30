@@ -1,3 +1,11 @@
+#---
+# Excerpted from "Agile Web Development with Rails 7",
+# published by The Pragmatic Bookshelf.
+# Copyrights apply to this code. It may not be used to create training material,
+# courses, books, articles, and the like. Contact us if you are in doubt.
+# We make no guarantees that this code is fit for any purpose.
+# Visit https://pragprog.com/titles/rails7 for more book information.
+#---
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
@@ -38,7 +46,10 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
+
+  # Don't actually send emails
   config.action_mailer.delivery_method = :test
+  #
   # Alternate configuration example, using gmail:
   #   config.action_mailer.delivery_method = :smtp
   #   config.action_mailer.smtp_settings = {
@@ -71,7 +82,6 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
-  config.active_storage.service = :local
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
@@ -80,4 +90,6 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  config.active_storage.service = :local
 end

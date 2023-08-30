@@ -1,3 +1,11 @@
+#---
+# Excerpted from "Agile Web Development with Rails 7",
+# published by The Pragmatic Bookshelf.
+# Copyrights apply to this code. It may not be used to create training material,
+# courses, books, articles, and the like. Contact us if you are in doubt.
+# We make no guarantees that this code is fit for any purpose.
+# Visit https://pragprog.com/titles/rails7 for more book information.
+#---
 require "active_support/core_ext/integer/time"
 
 # The test environment is used exclusively to run your application's
@@ -51,10 +59,12 @@ Rails.application.configure do
 
   # Tell Active Support which deprecation messages to disallow.
   config.active_support.disallowed_deprecation_warnings = []
-  config.active_storage.service = :test
+
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
+
+  config.active_storage.service = :test
 end
