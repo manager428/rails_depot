@@ -151,6 +151,7 @@ GEM
     parser (3.2.2.3)
       ast (~> 2.4.1)
       racc
+    pg (1.5.3-x64-mingw-ucrt)
     public_suffix (5.0.3)
     puma (5.6.7)
       nio4r (~> 2.0)
@@ -196,7 +197,7 @@ GEM
     reverse_markdown (2.1.1)
       nokogiri
     rexml (3.2.6)
-    rubocop (1.56.1)
+    rubocop (1.56.2)
       base64 (~> 0.1.1)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
@@ -289,6 +290,7 @@ DEPENDENCIES
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
+  pg (~> 1.5)
   puma (~> 5.0)
   rails (~> 7.0.7)
   redis (~> 4.0)

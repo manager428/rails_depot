@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+db:
+	image: postgres:14
+	volumes:
+		- pgdata:/var/lib/postgresql/data
+	environment:
+		POSTGRES_PASSWORD: password
+
+web:
+	build: .
+	volumes:
+		- ./log:/home/app/depot/log
+	secrets:
+		- source: master_key
+			target: /home/app/depot/config/master.key
+	ports:
+		- "8001:80"
+	depends_on:
+		- db
+
+secrets:
+master_key:
+	file: ./config/master.key
+
+volumes:
+pgdata:
